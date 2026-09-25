@@ -22,12 +22,14 @@ Staging → Fact / Dimension → Analytics Marts
 
 ## Tech Stack
 
-- AWS S3 — source data storage
-- Snowflake — cloud data warehouse
-- Snowpipe — automated S3-to-Snowflake ingestion
+- AWS S3 — Cloud object storage for source CSV files
+- Snowflake — Cloud data warehouse
+- Snowpipe — Automated S3-to-Snowflake ingestion
 - dbt — SQL transformations, modeling, and data quality tests
-- Apache Airflow — scheduling and orchestration
-- SQL / Python / Docker
+- Apache Airflow — Scheduling and Pipeline orchestration
+- Python — Airflow DAG and supporting pipeline configuration
+- SQL — Data transformation and Snowflake development
+- Docker — Local Airflow environment
 
 ## Pipeline
 
@@ -103,21 +105,43 @@ FOOD_DLV
 
 ```text
 food-delivery-de-pipeline/
+│
 ├── aws/
+│   ├── iam/
+│   └── s3_uplod.txt
+│
 ├── Snowflake_scripts/
+│   ├── setup.sql
+│   ├── Storage_Integration.sql
+│   ├── Stage_and_Formats.sql
+│   ├── Raw_Tables.sql
+│   └── Snowpipe.sql
+│
 ├── airflow/
+│   ├── dags/
+│   │   └── food_dlv_batch.py
+│   ├── Dockerfile
+│   ├── docker-compose.yaml
+│   └── example.env
+│
 ├── food_dlv_dbt/
 │   ├── models/
 │   │   ├── staging/
 │   │   └── marts/
-│   └── dbt_project.yml
+│   ├── macros/
+│   ├── dbt_project.yml
+│   └── README.md
+│
+├── .gitignore
 └── README.md
 ```
 
 ## Key Concepts
 
-- S3 and Snowflake integration
+- AWS S3 object storage
 - Snowpipe AUTO_INGEST
+- Snowflake integration
+- S3 event notifications
 - RAW / STAGING / MART architecture
 - dbt models and `ref()` dependencies
 - Incremental dbt models
@@ -128,4 +152,5 @@ food-delivery-de-pipeline/
 
 ## Outcome
 
-This project demonstrates an end-to-end modern data engineering workflow from cloud-based data ingestion to transformation, orchestration, and analytics-ready data models.
+The project demonstrates an end-to-end modern data engineering workflow, from cloud-based source ingestion through transformation and orchestration to analytics-ready data models.
+It also provides hands-on experience with dbt and Apache Airflow while building on existing knowledge of SQL, Snowflake, AWS S3, Python, and ETL workflows.
