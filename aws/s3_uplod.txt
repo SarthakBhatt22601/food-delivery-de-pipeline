@@ -1,0 +1,13 @@
+aws s3 cp "<LOCAL_PATH>\Dataset\food.csv" s3://<BUCKET>/raw/food/food.csv
+
+aws s3 cp "<LOCAL_PATH>\Dataset\menu.csv" s3://<BUCKET>/raw/menu/menu.csv
+
+aws s3 cp "<LOCAL_PATH>\Dataset\order_items.csv" s3://<BUCKET>/raw/order_items/order_items.csv
+
+aws s3 cp "<LOCAL_PATH>\Dataset\orders.csv" s3://<BUCKET>/raw/orders/orders.csv
+
+aws s3 cp "<LOCAL_PATH>\Dataset\restaurant.csv" s3://<BUCKET>/raw/restaurant/restaurant.csv
+
+aws s3 cp "<LOCAL_PATH>\Dataset\reviews.csv" s3://<BUCKET>/raw/reviews/reviews.csv
+
+aws s3 cp "<LOCAL_PATH>\Dataset\users.csv" s3://<BUCKET>/raw/users/users.csv
